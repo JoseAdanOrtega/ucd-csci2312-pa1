@@ -6,21 +6,22 @@ _working with objects_
 
 C++ lets us program with _objects_. We describe objects in C++ by declaring and defining _classes_. We _declare_ our class's structure in a header file, just like in C, and _define_ it (that is, write the code that actually does the work) in a corresponding source code file.
 
-Here is a sample header file <tt>Point.h</tt> that describes an object that represents a point in two-dimensional Euclidean space:
+Here is a sample header file <tt>Point.h</tt> that describes an object that represents a point in three-dimensional Euclidean space:
 
 ```c++
-// A 2-dimensional point class!
+// A 3-dimensional point class!
 // Coordinates are double-precision floating point.
 class Point {
 
 private:
     double x;
     double y;
+    double z;
 
 public:
     // Constructors
     Point();                      // default constructor
-    Point(double x, double y);    // two-argument constructor
+    Point(double x, double y, double z);    // three-argument constructor
 
     // Destructor
     ~Point();
@@ -28,10 +29,14 @@ public:
     // Mutator methods
     void setX(double newX);
     void setY(double newY);
+    void setZ(double newZ);
 
     // Accessor methods
     double getX() const;
     double getY() const;
+    double getZ() const;
+    
+    double distanceTo(const Point & pass1, const Point & pass2) const;
 
 };
 ```
@@ -40,7 +45,7 @@ We can _instantiate_, or create an instance of, our class anywhere in the rest o
 
 ```
 Point myPoint;            // Calls Point::Point(). Notice the lack of parentheses!
-Point myOtherPoint(5, 3); // Calls two-argument constructor Point::Point(double, double). Notice auto type conversion!
+Point myOtherPoint(5, 3, 4); // Calls two-argument constructor Point::Point(double, double, double). Notice auto type conversion!
 ```
 
 ### Your Task
